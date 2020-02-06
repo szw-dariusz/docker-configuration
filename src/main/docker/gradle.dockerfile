@@ -1,8 +1,10 @@
 FROM adoptopenjdk:13-jdk-openj9 AS builder
 RUN mkdir /app
 WORKDIR /app
+COPY gradlew ./
 COPY gradle gradle
-COPY *.gradle gradlew ./
+RUN ./gradlew --no-daemon
+COPY *.gradle ./
 RUN ./gradlew --no-daemon build
 COPY src src
 RUN ./gradlew --no-daemon assemble
