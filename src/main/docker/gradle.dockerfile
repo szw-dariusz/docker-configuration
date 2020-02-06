@@ -5,7 +5,7 @@ COPY gradlew ./
 COPY gradle gradle
 RUN ./gradlew --no-daemon
 COPY *.gradle ./
-RUN ./gradlew --no-daemon build
+RUN ./gradlew --no-daemon resolveDependencies
 COPY src src
 RUN ./gradlew --no-daemon assemble
 
